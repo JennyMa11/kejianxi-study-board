@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="课间隙：轻量、专注的个人学习任务板。" />
+    <title>课间隙 · 学习任务板</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="课间隙首页"><span class="brand-mark">课</span><span>课间隙</span></a>
+        <p id="today" class="today">今天</p>
+      </header>
+      <section class="hero" aria-labelledby="page-title">
+        <div><p class="eyebrow">TODAY'S STUDY DESK</p><h1 id="page-title">把今天的学习，<br /><span>一件件放稳。</span></h1></div>
+        <div class="progress-card" aria-label="今日进度"><div class="progress-meta"><span>今日进度</span><strong id="progressText">0 / 3</strong></div><div class="progress-track"><span id="progressBar" style="width: 0%"></span></div><p id="progressHint">从一件小事开始。</p></div>
+      </section>
+      <section class="workspace" aria-label="学习任务">
+        <div class="workspace-head"><div><p class="section-kicker">任务清单</p><h2>今天要推进什么？</h2></div><button class="primary-button" id="addTaskButton" type="button"><span aria-hidden="true">＋</span> 添加任务</button></div>
+        <div class="filters" role="group" aria-label="筛选任务"><button class="filter is-active" type="button" data-filter="all">全部 <span id="allCount">3</span></button><button class="filter" type="button" data-filter="active">进行中 <span id="activeCount">3</span></button><button class="filter" type="button" data-filter="done">已完成 <span id="doneCount">0</span></button></div>
+        <div id="taskList" class="task-list" aria-live="polite"></div>
+      </section>
+    </main>
+    <dialog id="taskDialog" class="task-dialog"><form id="taskForm" method="dialog"><div class="dialog-head"><div><p class="section-kicker">NEW TASK</p><h2>添加学习任务</h2></div><button class="icon-button" id="closeDialog" type="button" aria-label="关闭">×</button></div><label class="field"><span>任务名称</span><input id="taskTitle" name="title" maxlength="48" autocomplete="off" placeholder="例如：整理高数错题" required /></label><div class="field-grid"><label class="field"><span>课程</span><input id="taskCourse" name="course" maxlength="16" autocomplete="off" placeholder="高等数学" required /></label><label class="field"><span>预计用时</span><select id="taskDuration" name="duration"><option value="15">15 分钟</option><option value="25">25 分钟</option><option value="30">30 分钟</option><option value="45" selected>45 分钟</option><option value="60">60 分钟</option><option value="90">90 分钟</option></select></label></div><label class="priority-choice"><input id="taskPriority" name="priority" type="checkbox" /><span>标记为重点任务</span></label><p class="form-error" id="formError" role="alert"></p><div class="dialog-actions"><button class="secondary-button" id="cancelDialog" type="button">取消</button><button class="primary-button" type="submit">加入清单</button></div></form></dialog>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div><script src="./app.js"></script>
+  </body>
+</html>
